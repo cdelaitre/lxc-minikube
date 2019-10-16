@@ -1,0 +1,34 @@
+config:
+  linux.kernel_modules: ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,ip_tables,ip6_tables,netlink_diag,nf_nat,overlay,br_netfilter
+  raw.lxc: |
+    lxc.apparmor.profile=unconfined
+    lxc.mount.auto=proc:rw sys:rw cgroup:rw
+    lxc.cgroup.devices.allow=a
+    lxc.cap.drop=
+  security.nesting: "true"
+  security.privileged: "true"
+description: Minikube
+devices:
+  aadisable:
+    path: /sys/module/apparmor/parameters/enabled
+    source: /dev/null
+    type: disk
+  aadisable2:
+    path: /sys/module/nf_conntrack/parameters/hashsize
+    source: /sys/module/nf_conntrack/parameters/hashsize
+    type: disk
+  aadisable3:
+    path: /dev/kmsg
+    source: /dev/kmsg
+    type: disk
+  bootenable:
+    path: /boot/config-5.0.0-1018-azure
+    source: /boot/config-5.0.0-1018-azure
+    type: disk
+  modenable:
+    path: /lib/modules
+    source: /lib/modules
+    type: disk
+name: minikube
+used_by:
+- /1.0/containers/bionic
