@@ -30,5 +30,3 @@ devices:
     source: /lib/modules
     type: disk
 name: minikube
-used_by:
-- /1.0/containers/bionic
